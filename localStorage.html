@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+<body>
+    <h1>This page was visited <b></b> times </h1>
+
+    <h2>0</h2>
+
+    <script>
+
+        let example = 0
+        document.querySelector("h2").addEventListener("click", (e)=> e.target.textContent = Number(e.target.textContent) + 1) // The second part is called event handler
+
+
+
+        let count = localStorage.getItem("countInStorage") || 0   // inside the brackets we put the variable we want to read, and we are creating
+
+        count++
+
+        localStorage.setItem("countInStorage", count) // There are two arguments inside the brackets. The first parameter has to be the same as the one we used above, the second one is the new one are creating inside js
+
+        document.querySelector("b").textContent = count // now we are adding the new value of 'count' into <b>
+
+            //==================================================================
+
+            // Example with js object vs json
+
+            const userObj = {name:'Alice', age: count} // js Object
+
+            const jsonUser = JSON.stringify(userObj)
+
+            localStorage.setItem("example-user", userObj)
+
+            const userFromLocalStorage = localStorage.getItem("example-user")
+
+            console.log(userFromLocalStorage)
+            console.log(userObj)
+            console.log(jsonUser)
+
+
+
+    </script>
+</body>
+</html>
